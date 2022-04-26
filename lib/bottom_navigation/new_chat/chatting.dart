@@ -95,7 +95,7 @@ class _ChattingState extends State<Chatting> {
                   filled: true,
                   hintText: getTranslationOf('type_your_message'),
                   hintStyle: theme.textTheme.subtitle2!.copyWith(fontSize: 12),
-                  fillColor: Color(0xfff8f9fd),
+                  fillColor: Color(0xff111111),
                   prefixIcon: Icon(
                     Icons.emoji_emotions_outlined,
                     color: theme.hintColor,
@@ -283,6 +283,7 @@ class MessageBubble extends StatelessWidget {
                             color: theme.scaffoldBackgroundColor)
                         : Theme.of(context).textTheme.bodyText1!.copyWith(
                               fontWeight: FontWeight.w500,
+                              color: theme.hintColor,
                             ),
                   ),
                   SizedBox(

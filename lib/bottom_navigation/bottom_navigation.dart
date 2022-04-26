@@ -36,10 +36,6 @@ class _AppNavigationState extends State<AppNavigation> {
         icon: Icon(Icons.call),
         label: '',
       ),
-      BottomNavigationBarItem(
-        icon: Icon(Icons.call),
-        label: '',
-      ),
     ];
     return Scaffold(
       body: _children[_currentIndex],
@@ -84,7 +80,7 @@ class _AppNavigationState extends State<AppNavigation> {
               });
             },
           ),
-          PositionedDirectional(
+          /*PositionedDirectional(
             end: 24,
             bottom: 18,
             child: FloatingActionButton(
@@ -100,7 +96,7 @@ class _AppNavigationState extends State<AppNavigation> {
               child: Icon(Icons.notifications),
               backgroundColor: Theme.of(context).primaryColor,
             ),
-          ),
+          ),*/
         ],
       ),
     );

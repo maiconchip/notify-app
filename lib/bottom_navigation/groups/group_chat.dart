@@ -30,7 +30,7 @@ class _ChannelChatState extends State<ChannelChat> {
             height: 50,
           ),
           title: Text(
-            'St. Merry School',
+            'Crypto Channel',
             style: theme.textTheme.headline6,
           ),
         ),
@@ -44,44 +44,25 @@ class _ChannelChatState extends State<ChannelChat> {
                     MediaQuery.of(context).padding.vertical -
                     70,
                 child: MessageStream()),
-            TextField(
-              decoration: InputDecoration(
-                  contentPadding:
-                      EdgeInsets.only(left: 16, right: 16, top: 15, bottom: 15),
-                  isDense: true,
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide.none,
+
+            ButtonBar(
+              alignment: MainAxisAlignment.center,
+              overflowDirection: VerticalDirection.down,
+              children: [
+                PositionedDirectional(
+                  end: 24,
+                  bottom: 18,
+                  child: FloatingActionButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, PageRoutes.chatting);
+                      },
+                    child: Icon(Icons.chat),
+                    backgroundColor: Theme.of(context).primaryColor,
                   ),
-                  filled: true,
-                  hintText: getTranslationOf('type_your_message'),
-                  hintStyle: theme.textTheme.subtitle2!.copyWith(fontSize: 12),
-                  fillColor: Color(0xff242426),
-                  prefixIcon: Icon(
-                    Icons.emoji_emotions_outlined,
-                    color: theme.hintColor,
-                    size: 21,
-                  ),
-                  suffixIcon: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      IconButton(
-                        icon: Icon(
-                          Icons.add_circle_outline,
-                          size: 21,
-                        ),
-                        color: theme.hintColor,
-                        onPressed: () {},
-                      ),
-                      Icon(
-                        Icons.mic,
-                        color: theme.hintColor,
-                        size: 24,
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                    ],
-                  )),
+                ),
+
+              Text('Chat with admin Channel')
+            ],
             ),
           ],
         ),
@@ -105,33 +86,12 @@ class MessageStream extends StatelessWidget {
         isMe: false,
       ),
       MessageBubble(
-        sender: 'delivery_partner',
-        text: context.getTranslationOf('hey_max'),
-        time: '11:58 am',
-        isDelivered: false,
-        isMe: true,
-      ),
-      MessageBubble(
         sender: 'user',
         text: context.getTranslationOf('i_was')! +
             context.getTranslationOf('whats_your_view')!,
         time: '11:59 am',
         isDelivered: false,
         isMe: false,
-      ),
-      MessageBubble(
-        sender: 'delivery_partner',
-        text: context.getTranslationOf('hey_that_sounds_great'),
-        time: '11:58 am',
-        isDelivered: false,
-        isMe: true,
-      ),
-      MessageBubble(
-        sender: 'user',
-        text: context.getTranslationOf('yeah_great'),
-        time: '11:59 am',
-        isDelivered: false,
-        isMe: true,
       ),
     ];
     return ListView(

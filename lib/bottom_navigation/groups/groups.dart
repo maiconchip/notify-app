@@ -25,6 +25,7 @@ class Channels extends StatefulWidget {
 }
 
 class _ChannelsState extends State<Channels> {
+
   static final AdRequest request = AdRequest(
     keywords: <String>['foo', 'bar'],
     contentUrl: 'http://foo.com/bar.html',
@@ -82,57 +83,8 @@ class _ChannelsState extends State<Channels> {
     List<ChannelsChatDetails> _channelsChatDetails = [
       ChannelsChatDetails(
         "assets/profile_images/Layer 1005.png",
-        context.getTranslationOf('opus_office_staff'),
-        context.getTranslationOf('oh_so_quick'),
-        '08:11 am',
-        0,
-      ),
-      ChannelsChatDetails(
-        "assets/profile_images/Layer 1006.png",
-        context.getTranslationOf('gym_friends'),
-        context.getTranslationOf('oh_so_quick'),
-        '08:11 am',
-        1,
-      ),
-      ChannelsChatDetails(
-        "assets/profile_images/Layer 1007.png",
-        context.getTranslationOf('family_and_friends'),
-        context.getTranslationOf('oh_so_quick'),
-        '08:11 am',
-        0,
-      ),
-      ChannelsChatDetails(
-        "assets/profile_images/Layer 1002.png",
-        "St Marry School",
-        context.getTranslationOf('oh_so_quick'),
-        '08:11 am',
-        0,
-      ),
-      ChannelsChatDetails(
-        "assets/profile_images/Layer 1004.png",
-        context.getTranslationOf('wall_street_woolf'),
-        context.getTranslationOf('oh_so_quick'),
-        '08:11 am',
-        0,
-      ),
-      ChannelsChatDetails(
-        "assets/profile_images/Layer 1002.png",
-        context.getTranslationOf('motivators'),
-        context.getTranslationOf('oh_so_quick'),
-        '08:11 am',
-        1,
-      ),
-      ChannelsChatDetails(
-        "assets/profile_images/Layer 1005.png",
-        context.getTranslationOf('opus_office_staff'),
-        context.getTranslationOf('oh_so_quick'),
-        '08:11 am',
-        0,
-      ),
-      ChannelsChatDetails(
-        "assets/profile_images/Layer 1006.png",
-        context.getTranslationOf('gym_friends'),
-        context.getTranslationOf('oh_so_quick'),
+        "CryptoChannel",
+        "Active Notifications",
         '08:11 am',
         0,
       ),
@@ -177,24 +129,26 @@ class _ChannelsState extends State<Channels> {
                             EdgeInsets.symmetric(vertical: 4, horizontal: 12),
                         child: ListTile(
                           onTap: () {
-                            Navigator.pushNamed(context, PageRoutes.channelChat);
+
                           },
                           contentPadding: EdgeInsets.zero,
                           minLeadingWidth: 40,
-                          leading: Image.asset(_channelsChatDetails[index].image),
+                          leading: GestureDetector(onTap: (){
+                            Navigator.pushNamed(context, PageRoutes.channelChat);
+                          },child:  Image.asset(_channelsChatDetails[index].image),),
                           title: Row(
                             children: [
                               Text(
                                 _channelsChatDetails[index].name!,
                                 style: theme.textTheme.bodyText1,
+
                               ),
                               Spacer(),
-                              TextButton(onPressed: (){}, child: Text(_channelsChatDetails[index].status==0?"Suscribe":"Unsuscribe"),
-                                style: TextButton.styleFrom(
-                                primary: Colors.white,
-                                backgroundColor: _channelsChatDetails[index].status==0?Colors.green:Colors.red,
-                                onSurface: Colors.grey,
-                              ),
+                              ElevatedButton.icon(onPressed: (){
+                                Navigator.pushNamed(context, PageRoutes.channelProfile);
+                              }, icon: Icon(
+                                  Icons.notifications), label: Text('Actived'),
+                                style: ButtonStyle(backgroundColor:MaterialStateProperty.all(_channelsChatDetails[index].status==0?Colors.lightGreen:Colors.red,) ),
                               ),
                             ],
                           ),
@@ -208,10 +162,28 @@ class _ChannelsState extends State<Channels> {
                         ),
                       );
                     }),
+
                 beginOffset: Offset(0, 0.2),
                 durationInMilliseconds: 300,
                 endOffset: Offset(0, 0),
                 curve: Curves.linearToEaseOut,
+              ),
+              Container(
+              decoration: BoxDecoration(
+              color: theme.scaffoldBackgroundColor,
+          borderRadius: BorderRadius.circular(12),
+          ),
+          padding:
+          EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+          margin:
+          EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+          child: ElevatedButton.icon(onPressed: (){
+            Navigator.pushNamed(context, PageRoutes.channelProfile);
+          }, icon: Icon(
+              Icons.add), label: Text('Add channel'),
+            style: ButtonStyle(backgroundColor:MaterialStateProperty.all(Colors.black) ),
+          ),
+
               ),
             ],
           );
